@@ -1,0 +1,280 @@
+app:
+  description: 独立的产品经理问答与需求访谈助手：澄清想法、审查需求、生成可追溯的PRD草案。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 产品经理问答 Agent
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    nodes:
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '你是一个独立的“产品经理问答 Agent”，面向任何行业的产品想法、需求澄清和产品方法咨询。不得预设品牌、学校、营销工作台或某个项目；用户没有说过的背景一律未知。
+
+
+              严格输出 JSON：{"question":"给用户的回答或问题", "slot_ids":["字段key"], "proposals":[{"slot_id":"字段key","value_json":"JSON序列化后的建议值","reason":"理由"}]}。不要输出代码围栏、隐藏推理、进度条或重复操作说明。
+
+
+              先读本轮问题和 reply_mode：
+
+              - explain：优先把用户问的产品概念/方法解释清楚，用贴合当前项目的简短例子；没有项目时使用明确标为举例的通用案例。question里写完整回答，slot_ids可为空，proposals通常为空。不得无视问题继续盘问，也不要从概念问题编造项目需求。
+
+              - guide：用户不会答或请你建议。先解释这一项在问什么，给一个可修改的候选方向及理由，明确这是建议，不是已确认事实；建议写入proposals，通常只一项。最后只问“这是否接近你的想法，想改哪里？”不要替用户决定，也不要把不知道当作跳过。
+
+              - interview：围绕allowed_slots中最值得澄清的一项提问。每轮一个核心问题，必要时最多两个紧密相关的小问题。不要把十几个维度塞在一句话里。普通问题控制在120字左右，不说“感谢补充”等套话。
+
+
+              已有信息不要重问，即使它在另一个字段里。如果当前字段的内容已在产品概述中出现，简短说明你的理解，请用户补充缺的部分或确认可沿用；不能绕开事实来源擅自写入。对“希望快一点”追问具体任务和衡量方式；没有基线时先问如何观察，不能编造数字。
+
+
+              普通回答不必调用工具。需要理解新字段、协助用户回答或补充方法时，可调用一次get_slot_guide，section_id使用字段所属章节1–10，slot_ids_json必须是字段key的JSON数组字符串。工具是方法，不是项目事实。最多3次迭代，不调用成稿或任何写入工具。
+
+
+              slot_ids只允许来自allowed_slots。若pending_proposals非空，先处理既有建议，不重复新增。用户只是问建议含义时先解释。涉及画像、目标、故事、功能、指标的建议用对象数组，新对象id使用tmp_前缀，既有引用必须真实存在。文本建议使用JSON编码的字符串。
+
+              实体字段：business_goals/user_goals:[{id,text}]；persona_details:[{id,text,context}]；user_stories:[{id,text,persona_id,goal_ids:[]}]；functional_requirements:[{id,text,story_ids:[],acceptance_criteria:[]}]；success_metrics:[{id,name,type,goal_ids:[],baseline,target,timeframe,definition}]。未知数字留_TBD_。建议必须可据用户回答修正，不制造研究结论或默认权限。
+
+
+              你没有批准成稿或改变状态的权限。需要生成/预览时解释用户可说“查看草稿”或“审查当前需求”；最终以系统展示的版本口令确认。对与产品无关的简短问题可简答后温和回到用户目的。
+
+              '
+          maximum_iterations:
+            type: constant
+            value: 3
+          model:
+            type: constant
+            value:
+              completion_params:
+                max_tokens: 3000
+                temperature: 0.3
+                thinking: false
+              mode: chat
+              model: deepseek-flash
+              model_type: llm
+              provider: langgenius/deepseek/deepseek
+              type: model-selector
+          query:
+            type: constant
+            value: '本轮用户输入：{{#sys.query#}}
+
+              规范状态与允许字段：{{#prepared.context_json.output#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 只读 PRD 字段指南。按章节和字段 key 返回追问方法与完成标准，不代表项目事实，不修改会话。
+              parameters:
+                section_id:
+                  auto: 1
+                  value: null
+                slot_ids_json:
+                  auto: 1
+                  value: null
+              plugin_id: null
+              provider_name: REPLACE_WITH_GET_SLOT_GUIDE_PROVIDER_ID
+              provider_show_name: PM 问答 · 需求指南
+              settings: {}
+              tool_description: 只读 PRD 字段指南。按章节和字段 key 返回追问方法与完成标准，不代表项目事实，不修改会话。
+              tool_label: PM 问答 · 需求指南
+              tool_name: get_slot_guide
+              type: workflow
+        agent_strategy_label: FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: langgenius/agent/agent
+        default_value:
+        - key: text
+          type: string
+          value: '{}'
+        - key: json
+          type: array[object]
+          value: '[]'
+        desc: ''
+        error_strategy: default-value
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.50@bf1040682cc9e1e5caf9b4670531639c440bf9448025cd5ee0915fdcf7a921f3
+        selected: false
+        title: N08 Senior PM 访谈 Agent
+        tool_node_version: '2'
+        type: agent
+      height: 100
+      id: interview
+      position:
+        x: 2494
+        y: 0
+      positionAbsolute:
+        x: 2494
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        default_value:
+        - key: text
+          type: string
+          value: ''
+        - key: json
+          type: array[object]
+          value: '[]'
+        desc: ''
+        error_strategy: default-value
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 主流程确认门禁输出的 snapshot_json。
+            ja_JP: 主流程确认门禁输出的 snapshot_json。
+            pt_BR: 主流程确认门禁输出的 snapshot_json。
+            zh_Hans: 主流程确认门禁输出的 snapshot_json。
+          input_schema: null
+          label:
+            en_US: 已审查冻结的会话状态 JSON
+            ja_JP: 已审查冻结的会话状态 JSON
+            pt_BR: 已审查冻结的会话状态 JSON
+            zh_Hans: 已审查冻结的会话状态 JSON
+          llm_description: 主流程确认门禁输出的 snapshot_json。
+          max: null
+          min: null
+          multiple: false
+          name: snapshot_json
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 与快照审查一致的风险说明 JSON 数组。
+            ja_JP: 与快照审查一致的风险说明 JSON 数组。
+            pt_BR: 与快照审查一致的风险说明 JSON 数组。
+            zh_Hans: 与快照审查一致的风险说明 JSON 数组。
+          input_schema: null
+          label:
+            en_US: 已披露风险 JSON 数组
+            ja_JP: 已披露风险 JSON 数组
+            pt_BR: 已披露风险 JSON 数组
+            zh_Hans: 已披露风险 JSON 数组
+          llm_description: 与快照审查一致的风险说明 JSON 数组。
+          max: null
+          min: null
+          multiple: false
+          name: review_notes_json
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          review_notes_json: ''
+          snapshot_json: ''
+        plugin_id: null
+        plugin_unique_identifier: null
+        provider_icon:
+          background: '#FFEAD5'
+          content: 🤖
+        provider_id: REPLACE_WITH_RENDER_PRD_PROVIDER_ID
+        provider_name: PM 问答 · PRD 成稿
+        provider_show_name: PM 问答 · PRD 成稿
+        provider_type: workflow
+        selected: false
+        title: N16 确认后固定模板成稿
+        tool_configurations: {}
+        tool_description: 将已审查的冻结快照确定性渲染为十章 Markdown PRD。仅由主流程的确认门禁分支调用，不加入访谈 Agent 工具列表。
+        tool_label: PM 问答 · PRD 成稿
+        tool_name: render_prd
+        tool_node_version: '2'
+        tool_parameters:
+          review_notes_json:
+            type: mixed
+            value: '{{#begin.review_notes_json#}}'
+          snapshot_json:
+            type: mixed
+            value: '{{#begin.snapshot_json#}}'
+        type: tool
+      height: 100
+      id: render
+      position:
+        x: 1046
+        y: 383.3888888888889
+      positionAbsolute:
+        x: 1046
+        y: 383.3888888888889
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    edges: []
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+  rag_pipeline_variables: []

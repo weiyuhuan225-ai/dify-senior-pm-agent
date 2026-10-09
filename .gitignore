@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+*.pem
+*.key
+*.log
+dist/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+live_validation.txt
+test_results.txt
+sample_reviewed_state.json
+sample_review_notes.json

@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600
+    },
+    "slot_ids": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "enum": [
+          "project_title",
+          "project_summary",
+          "business_goals",
+          "user_goals",
+          "non_goals",
+          "key_user_types",
+          "persona_details",
+          "role_based_access",
+          "user_stories",
+          "functional_requirements",
+          "entry_points",
+          "core_experience",
+          "edge_cases",
+          "ux_highlights",
+          "narrative",
+          "success_metrics",
+          "integration_points",
+          "data_privacy",
+          "scalability_performance",
+          "potential_challenges",
+          "build_phases"
+        ]
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot_id": {
+            "type": "string"
+          },
+          "value_json": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "slot_id",
+          "value_json",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "question",
+    "slot_ids",
+    "proposals"
+  ]
+}

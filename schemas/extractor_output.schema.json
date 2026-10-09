@@ -1,0 +1,130 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "answer",
+        "revise",
+        "accept_proposal",
+        "skip",
+        "preview",
+        "audit",
+        "confirm",
+        "help"
+      ]
+    },
+    "updates": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "slot_id": {
+            "type": "string",
+            "enum": [
+              "project_title",
+              "project_summary",
+              "business_goals",
+              "user_goals",
+              "non_goals",
+              "key_user_types",
+              "persona_details",
+              "role_based_access",
+              "user_stories",
+              "functional_requirements",
+              "entry_points",
+              "core_experience",
+              "edge_cases",
+              "ux_highlights",
+              "narrative",
+              "success_metrics",
+              "integration_points",
+              "data_privacy",
+              "scalability_performance",
+              "potential_challenges",
+              "build_phases"
+            ]
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "set",
+              "upsert",
+              "remove",
+              "mark_tbd",
+              "mark_na",
+              "accept_proposal"
+            ]
+          },
+          "entity_id": {
+            "type": "string"
+          },
+          "value_json": {
+            "type": "string"
+          },
+          "evidence_quote": {
+            "type": "string"
+          },
+          "source_kind": {
+            "type": "string",
+            "enum": [
+              "user",
+              "document",
+              "accepted_proposal"
+            ]
+          },
+          "proposal_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "slot_id",
+          "operation",
+          "entity_id",
+          "value_json",
+          "evidence_quote",
+          "source_kind",
+          "proposal_id"
+        ]
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot_id": {
+            "type": "string"
+          },
+          "value_json": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "slot_id",
+          "value_json",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ambiguities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "intent",
+    "updates",
+    "proposals",
+    "ambiguities"
+  ]
+}

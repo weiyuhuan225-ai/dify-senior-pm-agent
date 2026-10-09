@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "prd_version": "v1",
+  "content_revision": 0,
+  "stage": "INTERVIEW",
+  "cursor": "project_summary",
+  "slots": {
+    "project_title": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "project_summary": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "business_goals": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "user_goals": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "non_goals": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "key_user_types": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "persona_details": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "role_based_access": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "user_stories": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "functional_requirements": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "entry_points": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "core_experience": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "edge_cases": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "ux_highlights": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "narrative": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "success_metrics": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "integration_points": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "data_privacy": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "scalability_performance": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "potential_challenges": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    },
+    "build_phases": {
+      "value": "",
+      "status": "missing",
+      "origin": "none",
+      "source_turn": 0,
+      "evidence_quote": ""
+    }
+  },
+  "pending_proposals": [],
+  "last_question": {},
+  "review": {},
+  "last_artifact": {}
+}

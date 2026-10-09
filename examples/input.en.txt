@@ -1,0 +1,13 @@
+Everything below is a fictional demo assumption, not a measured result.
+The product is called “Book Club Lending Log” (书会借阅簿). It helps organizers of small book clubs record book loans, returns, and current status.
+The user is an organizer who maintains the lending log on their own. The first version has a single administrator role.
+The goal is to reduce the time needed to record a loan or return. The demo baseline is 5 minutes, the target is 2 minutes, and the demo observation period is two weeks; the measure is the average time from opening the entry page to saving successfully.
+User story: As an organizer, I want to record a book being lent out or returned so that I can track its current lending status.
+The function is to create a lending record and update it as returned; the acceptance criterion is that, after a successful save, the status in the list matches the record.
+The first version is available only through a web interface. It does not collect payments, send messages automatically, or recommend books.
+The user creates a record from the lending list, enters the book title, borrower alias, and date, and returns to the list after saving; when the book is returned, the user updates the same record.
+Duplicate submissions show a message that the record already exists. If saving fails, the entered information is preserved and the user can retry.
+The interface prioritizes records of books currently on loan and a clear save status.
+Store only the borrower aliases needed for the demo, without real contact details; the data retention period remains TBD.
+The build order is to implement the record list and record creation first, then return updates, and finally improve error messages.
+Leave all other unspecified fields as TBD.

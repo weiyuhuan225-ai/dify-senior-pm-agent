@@ -1,5 +1,7 @@
 # Dify Senior PM Agent
 
+[简体中文](README.md) | [English](README.en.md)
+
 **产品经理问答 Agent：通过多轮访谈澄清需求，经审查与版本确认，生成十章 Markdown PRD。**
 
 A Dify Chatflow that turns a product idea into a reviewed PRD through guided interviews, structured state, and explicit revision confirmation.
@@ -7,6 +9,8 @@ A Dify Chatflow that turns a product idea into a reviewed PRD through guided int
 这是一个独立的产品经理助手原型，适合学习需求访谈、Agent 与工作流的分工，以及如何把提示词转成可检查的产品流程。既可以讨论产品概念与方法，也可以从一个想法开始整理需求。
 
 **状态：公开原型 / Prototype。** 已验证本地规则与构建；导入新的 Dify 工作区后，需要选择可用模型、重新绑定两个工作流工具并完成预览验证。当前输出为 Markdown，尚未接入 Word 文件下载。
+
+文档提供完整的中文和英文版本。当前导出的对话提示词、命令与 PRD 模板以中文为主；英文提示词和示例用于对照学习，尚未完成英文对话的在线验证。
 
 ## 它解决什么问题
 
@@ -77,10 +81,10 @@ python scripts/make_example.py
 | `src/registry.json` | 21 个需求字段及完成标准 |
 | `src/interviewer.md` | 当前访谈 Agent 提示词 |
 | `src/build_dsl.py`、`src/templates/` | DSL 生成器与清理后的节点模板 |
-| `prompts/`、`schemas/` | 提取、访谈、审查与输出结构参考 |
+| [prompts/](prompts/README.md)、`schemas/` | 中英提示词对照、提取、访谈、审查与输出结构参考 |
 | `tests/` | 31 项程序回归检查和合成格式兼容样例 |
-| `examples/` | 合成需求输入、可重现快照与 PRD 输出 |
-| `docs/` | 导入、架构、验证与已知限制 |
+| [examples/](examples/README.md) | 合成需求输入、可重现快照与 PRD 输出，以及英文对照 |
+| `docs/` | 导入、架构、验证与已知限制；每篇均有中英版本 |
 
 ## 已验证范围与限制
 

@@ -1,0 +1,149 @@
+{
+  "project_title": {
+    "section": 1,
+    "label": "项目名称",
+    "fallback_question": "这个名称是否准确概括你要做的产品？",
+    "completion_rubric": "名称具体，不夸大已实现能力。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "project_summary": {
+    "section": 1,
+    "label": "产品概述",
+    "fallback_question": "谁在什么场景遇到什么问题，你打算帮他完成什么任务？",
+    "completion_rubric": "包含用户、场景、问题、价值。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "business_goals": {
+    "section": 2,
+    "label": "业务目标",
+    "fallback_question": "你希望项目产生什么业务结果，用哪个指标判断？",
+    "completion_rubric": "业务结果与指标配对，不是罗列功能。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "user_goals": {
+    "section": 2,
+    "label": "用户目标",
+    "fallback_question": "用户完成任务后有什么可观察的改善，如何衡量？",
+    "completion_rubric": "用户结果与指标配对。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "non_goals": {
+    "section": 2,
+    "label": "非目标",
+    "fallback_question": "这一版明确不做什么？",
+    "completion_rubric": "排除边界明确且不与核心目标冲突。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "key_user_types": {
+    "section": 3,
+    "label": "用户类型",
+    "fallback_question": "第一版最优先服务哪一类具体用户？",
+    "completion_rubric": "不能只写所有人。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "persona_details": {
+    "section": 3,
+    "label": "画像细节",
+    "fallback_question": "这类用户的任务频率、工作背景和当前替代方案是什么？",
+    "completion_rubric": "给画像P-ID，假设与研究证据分开。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "role_based_access": {
+    "section": 3,
+    "label": "角色权限",
+    "fallback_question": "建议的角色权限是否符合你真实的协作方式？",
+    "completion_rubric": "从画像提出候选权限，用户确认后才进入需求。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "user_stories": {
+    "section": 4,
+    "label": "用户故事",
+    "fallback_question": "作为这类用户，你希望完成哪个动作，得到什么结果？",
+    "completion_rubric": "绑定persona_id，可关联goal_ids，赋稳定US-ID。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "functional_requirements": {
+    "section": 5,
+    "label": "功能需求",
+    "fallback_question": "系统必须做什么，什么结果可以让我们判断它实现了这个故事？",
+    "completion_rubric": "单条可测试，使用FR-ID并绑定story_ids。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "entry_points": {
+    "section": 6,
+    "label": "入口",
+    "fallback_question": "用户从哪里进入，第一次需要提供哪些信息？",
+    "completion_rubric": "入口与首次使用步骤可描述。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "core_experience": {
+    "section": 6,
+    "label": "核心流程",
+    "fallback_question": "从输入到得到结果，用户依次做什么？",
+    "completion_rubric": "覆盖主路径和必要人工节点。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "edge_cases": {
+    "section": 6,
+    "label": "异常场景",
+    "fallback_question": "输入不完整、失败或取消时，用户看到什么，如何继续？",
+    "completion_rubric": "不能只描述成功路径。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "ux_highlights": {
+    "section": 6,
+    "label": "界面重点",
+    "fallback_question": "哪个界面行为最影响这项任务是否顺畅？",
+    "completion_rubric": "具体交互而非空泛的高级感。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "narrative": {
+    "section": 7,
+    "label": "使用叙事",
+    "fallback_question": "我按已确认事实整理的使用场景是否准确？",
+    "completion_rubric": "一到两段，不添加新需求。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "success_metrics": {
+    "section": 8,
+    "label": "成功指标",
+    "fallback_question": "指标的口径、基线、目标、期限分别是什么？",
+    "completion_rubric": "M-ID绑定goal_ids；无数据不写0。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "integration_points": {
+    "section": 9,
+    "label": "集成",
+    "fallback_question": "必须接入哪些既有系统，哪些尚未确认？",
+    "completion_rubric": "不要为了填表猜技术栈。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "data_privacy": {
+    "section": 9,
+    "label": "数据与隐私",
+    "fallback_question": "会处理哪些数据，谁能查看，需要保存多久？",
+    "completion_rubric": "未知保留TBD；权限不能由模型自行授予。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "scalability_performance": {
+    "section": 9,
+    "label": "规模性能",
+    "fallback_question": "典型请求规模是什么，响应时间如何衡量？",
+    "completion_rubric": "阈值要有单位、百分位和负载条件或明确TBD。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "potential_challenges": {
+    "section": 9,
+    "label": "风险",
+    "fallback_question": "最可能使方案失效的依赖或假设是什么？",
+    "completion_rubric": "列风险及待验证事项。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  },
+  "build_phases": {
+    "section": 10,
+    "label": "建设顺序",
+    "fallback_question": "哪些能力必须先做，哪些是下一阶段的增强？",
+    "completion_rubric": "按优先级和依赖，不编工期或人员。",
+    "source": "原创工程化问题指南；依据上游十章结构"
+  }
+}

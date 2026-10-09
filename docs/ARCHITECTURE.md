@@ -1,5 +1,7 @@
 # 架构与设计选择
 
+[中文](ARCHITECTURE.md) / [English](ARCHITECTURE.en.md)
+
 ## 三个应用的职责
 
 主应用是 19 节点 Chatflow。需求指南和 PRD 成稿各是一个 3 节点 Workflow，作为主流程使用的工具。它们不依赖外部知识库或自建后端。

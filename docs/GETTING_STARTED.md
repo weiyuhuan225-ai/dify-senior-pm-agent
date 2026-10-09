@@ -1,5 +1,7 @@
 # 导入与运行
 
+[中文](GETTING_STARTED.md) / [English](GETTING_STARTED.en.md)
+
 ## 1. 准备 Dify 与模型
 
 本仓库 DSL 格式版本为 `0.7.0`，来源于已有 Dify 应用的导出配置。DSL 格式号不是 Dify 服务版本号。目标环境必须支持本文件使用的 Agent、结构化输出、变量聚合器与会话变量写入节点；请以导入时的兼容性检查为准。
